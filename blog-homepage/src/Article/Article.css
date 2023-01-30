@@ -1,0 +1,159 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Lato", sans-serif;
+    font-size: 16px;
+    color: #777;
+    padding: 30px;
+}
+
+.card-container {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 40%;
+    height: 220px;
+    border-radius: 5px;
+    margin: 20px;
+ }
+
+.card-image-container {
+    top: 0%;
+    left: 0%;
+    width: 35%;
+    height: 100%;
+    float:left;
+    border-radius: 5px;
+   
+    /* background-color: blue; */
+}
+
+.card-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.card-content {
+    top: 0%;
+    left: 35%;
+    width: 65%;
+    height: 100%;
+    float:left;
+    padding: 15px;
+     /* background-color:  green; */
+    border-radius: 5px;
+}
+
+.card-article-info {
+    top: 0%;
+    left: 35%;
+    width: 100%;
+    height: 80%;
+    float:left;
+    /* background-color: orange; */
+}
+
+
+.card-article-title {
+    font-size: 1.3rem;
+    line-height: 0.5rem;
+    font-weight: 600;
+    line-height: 110%;
+}
+
+.card-article-title::after {
+    font-size: 1.3rem;
+    content: "\a\a";
+    white-space: pre;
+
+}
+
+.card-article-description {
+    font-size: .8rem;
+    line-height: 100%;
+}
+
+
+/* ********* */
+
+
+.card-profile-info {
+    top: 60%;
+    left: 35%;
+    float:left;
+    width: 100%;
+    height: 25%;
+    /* background-color: grey; */
+}
+
+/* Photo Container */
+.writter-photo-container {
+
+    float:left;
+    width: 15%;
+    height: 100%;
+    /* background-color: green; */
+}
+
+.writter-photo-img {
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+/* Writter Info Contaner */
+
+.writter-info-container {
+
+    float:left;
+    width: 75%;
+    height: 100%;
+    padding-left:  .5rem;
+}
+
+.writter-name {
+    font-size: 0.7rem;
+    font-weight: 300;
+    line-height: 1.5rem;
+    /* background-color: yellow; */
+}
+
+.writter-name::after {
+    content: "\a";
+    white-space: pre;
+}
+
+.writter-posted-date { 
+    font-size: 0.7rem;
+    line-height: 1.5rem;
+    font-weight: 100;
+    /* background-color: red; */
+}
+
+.writter-minutes-toread {
+    font-size: 0.7rem;
+    line-height: 1.5rem;
+    font-weight: 100;
+}
+
+
+
+
+/* Link */
+
+.writter-profile-link {
+
+    float:left;
+    width: 10%;
+    height: 100%;
+    /* background-color: blueviolet; */ 
+}
+
+.icon-display {
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
