@@ -11,10 +11,15 @@ body {
     padding: 30px;
 }
 
+.section-category {
+    font-weight: 800;
+    font-size: 1.5rem;
+}
+
 .card-container {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
-    width: 40%;
+    width: 480px;
     height: 220px;
     border-radius: 5px;
     margin: 20px;
@@ -52,11 +57,21 @@ body {
     top: 0%;
     left: 35%;
     width: 100%;
-    height: 80%;
+    height: 75%;
     float:left;
     /* background-color: orange; */
 }
 
+.card-article-audio {
+    font-size: 0.7rem;
+    line-height: 0.5rem;
+    font-weight: 100;
+}
+
+.card-article-audio::after {
+    content: "\a\a";
+    white-space: pre;
+}
 
 .card-article-title {
     font-size: 1.3rem;
