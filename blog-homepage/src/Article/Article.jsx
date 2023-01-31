@@ -2,11 +2,42 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Article.css';
 
-// https://stackoverflow.com/questions/16647380/max-width-vs-min-width#:~:text=Typically%2C%20with%20min%2Dwidth%20patterns,then%20target%20progressively%20larger%20screens.
+
+function RenderCardArticle(props) {
+    const hasAudioAvailable = props.hasAudioAvailable;
+    const memberPreview = props.memberPreview;
+    const title = props.title;
+    const description = props.description;
+
+    if ( hasAudioAvailable) {
+        return (
+            <div className="card-article-info-audio">
+                <span className="card-article-audio "> Audio Available</span>
+                <span className="card-article-title"> { title } </span>
+                <span className="card-article-description"> { description } </span>
+            </div>
+        )
+    } else if (memberPreview ) {
+        return (
+            <div className="card-article-info-audio">
+                <span className="card-article-audio "> Member preview</span>
+                <span className="card-article-title"> { title } </span>
+                <span className="card-article-description"> { description } </span>
+            </div>
+        ) 
+    }
+
+    return (
+        <div className="card-article-info">
+        <span className="card-article-title"> { props.title } </span>
+        <span className="card-article-description"> { props.description } </span>
+    </div>   
+    )
+
+}
 
 class Article extends React.Component {
    
-
     render() {
         const description = this.props.description;
         const hasAudioAvailable = this.props.hasAudioAvailable;
@@ -29,17 +60,24 @@ class Article extends React.Component {
             <div className="card-container">
                 
                 <div className="card-image-container" >
-                    <img className="card-image" src={ image } width="30px" height="30px" />
-                       
+                    <img className="card-image" src={ image } width="30px" height="30px" /> 
                 </div>
                 <div className="card-content">
+
+                    <RenderCardArticle 
+                        title={title} 
+                        description={description}  
+                        hasAudioAvailable={hasAudioAvailable}
+                        memberPreview={memberPreview}
+                    />
+                    
+                    {/* 
                     <div className="card-article-info">
                         <span className="card-article-title"> { title } </span>
                         <span className="card-article-description"> { description } </span>
                     </div>
-
-
-
+                     */}
+                   
                     <div className="card-profile-info">
                         <div className="writter-photo-container">
                             <img className="writter-photo-img"  width="100%" src={ authorImage } />
