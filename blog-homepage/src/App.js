@@ -16,6 +16,7 @@ function App() {
   
           <Article 
             author={article.author}
+            missedArticle={false}
             description={article.description}
             hasAudioAvailable={article.hasAudioAvailable}
             image={article.image}
@@ -34,16 +35,17 @@ function App() {
       <div>
         {missedArticles.map(article => (
             <Article 
-            author={article.author}
-            description={article.description}
-            hasAudioAvailable={article.hasAudioAvailable}
-            image={article.image}
-            link={article.link}
-            memberPreview={article.memberPreview}
-            minutesToRead={article.minutesToRead}
-            postedDate={article.postedDate}
-            title={article.title}
-          />
+              author={article.author}
+              missedArticle={true}
+              description={article.description}
+              hasAudioAvailable={article.hasAudioAvailable}
+              image={article.image}
+              link={article.link}
+              memberPreview={article.memberPreview}
+              minutesToRead={article.minutesToRead}
+              postedDate={article.postedDate}
+              title={article.title}
+            />
         ))}
       </div>
     </div>
