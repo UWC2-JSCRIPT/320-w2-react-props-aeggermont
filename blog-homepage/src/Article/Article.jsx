@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './Article.css';
 
 
-function RenderCardArticle(props) {
+function SpecialAttributes(props) {
     const hasAudioAvailable = props.hasAudioAvailable;
     const memberPreview = props.memberPreview;
     const title = props.title;
@@ -29,79 +29,126 @@ function RenderCardArticle(props) {
 
     return (
         <div className="card-article-info">
-        <span className="card-article-title"> { props.title } </span>
-        <span className="card-article-description"> { props.description } </span>
-    </div>   
+            <span className="card-article-title"> { props.title } </span>
+            <span className="card-article-description"> { props.description } </span>
+        </div>   
     )
-
 }
 
-class Article extends React.Component {
-   
-    render() {
-        const description = this.props.description;
-        const hasAudioAvailable = this.props.hasAudioAvailable;
-        const authorName = this.props.author.name;
-        const authorImage = this.props.author.image; 
-        const isMediumMember = this.props.author.isMediumMember;
-        const image = this.props.image;
-        const link = this.props.link;
-        const memberPreview = this.props.memberPreview;
-        const minutesToRead =  this.props.minutesToRead;
-        const postedDate = this.props.postedDate;
-        const title = this.props.title;
+function MissedArtSpeAttributes(props) {
+    const hasAudioAvailable = props.hasAudioAvailable;
+    const memberPreview = props.memberPreview;
+    const title = props.title;
+    const description = props.description;
 
-        const shortDate = new Date(postedDate);
-        const monthShortName = shortDate.toLocaleString('default', { month: 'short' });
-        const monthDay = shortDate.getDate();
+    if (memberPreview ) {
+        return (
+            <div className="missedcard-article-info">
+                <span className="card-article-audio "> Member preview</span>
+                <span className="missedcard-article-title"> { title } </span>
+                <span className="missedcard-article-description"> { description } </span>
+            </div>
+        ) 
+    }
 
-        console.log(shortDate);
+    return (
+        <div className="missedcard-article-info">
+            <span className="missedcard-article-title"> { props.title } </span>
+            <span className="missedcard-article-description"> { props.description } </span>
+        </div>   
+    ) 
+}
+
+
+function Article (props) {
+
+    const missedArticle = props.missedArticle;
+    const description = props.description;
+    const hasAudioAvailable = props.hasAudioAvailable;
+    const authorName = props.author.name;
+    const authorImage = props.author.image; 
+    const image = props.image;
+    const link = props.link;
+    const memberPreview = props.memberPreview;
+    const minutesToRead =  props.minutesToRead;
+    const postedDate = props.postedDate;
+    const title = props.title;
+    const shortDate = new Date(postedDate);
+    const monthShortName = shortDate.toLocaleString('default', { month: 'short' });
+    const monthDay = shortDate.getDate();
+
+
+    if (!missedArticle) {
         return (
             <div className="card-container">
-                
                 <div className="card-image-container" >
                     <img className="card-image" src={ image } width="30px" height="30px" /> 
                 </div>
                 <div className="card-content">
-
-                    <RenderCardArticle 
+                    <SpecialAttributes 
                         title={title} 
                         description={description}  
                         hasAudioAvailable={hasAudioAvailable}
                         memberPreview={memberPreview}
                     />
-                    
-                    {/* 
-                    <div className="card-article-info">
-                        <span className="card-article-title"> { title } </span>
-                        <span className="card-article-description"> { description } </span>
-                    </div>
-                     */}
-                   
                     <div className="card-profile-info">
                         <div className="writter-photo-container">
                             <img className="writter-photo-img"  width="100%" src={ authorImage } />
                         </div>
                         <div className="writter-info-container"> 
-                         <span className="writter-name"> { authorName } </span>
-                         <span className="writter-posted-date" > { monthShortName } { monthDay }</span>
-                         <span className="writter-minutes-toread"> - { minutesToRead } </span>
+                            <span className="writter-name"> { authorName } </span>
+                            <span className="writter-posted-date" > { monthShortName } { monthDay }</span>
+                            <span className="writter-minutes-toread"> - { minutesToRead } </span>
                         </div>
                         <div className="writter-profile-link"> 
                             <img className="icon-display" width="70%" src="anchor-icon.png" />
                         </div>
                     </div>
                 </div>
-                
             </div>
-
-        );
+        )
     }
+
+    if (missedArticle) {
+        return (
+            <div className="missedcart-card-container">
+                <div className="missedcart-cardimage-container" >
+                    <img className="missedcart-card-image" src={ image }  /> 
+                </div>
+                <div className="missedcart-content">
+                    <MissedArtSpeAttributes 
+                        title={title} 
+                        description={description}  
+                        hasAudioAvailable={hasAudioAvailable}
+                        memberPreview={memberPreview}
+                    />
+                </div>
+               
+                <div className="missedcard-profile-info">
+                    <div className="writter-photo-container">
+                        <img className="writter-photo-img"  width="100%" src={ authorImage } />
+                    </div>
+                   
+                    <div className="writter-info-container"> 
+                        <span className="writter-name"> { authorName } </span>
+                        <span className="writter-posted-date" > { monthShortName } { monthDay }</span>
+                        <span className="writter-minutes-toread"> - { minutesToRead } </span>
+                    </div>
+                    <div className="writter-profile-link"> 
+                        <img className="icon-display" width="70%" src="anchor-icon.png" />
+                    </div>
+                
+                </div>
+                
+            </div>      
+        )
+    }   
 }
 
 
 Article.propTypes = {
     author: PropTypes.object.isRequired,
+    missedArticle: PropTypes.bool.isRequired,
     description: PropTypes.string.isRequired,
     hasAudioAvailable: PropTypes.bool.isRequired,
     image: PropTypes.string.isRequired,
